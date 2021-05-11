@@ -1,0 +1,11 @@
+<div *ngIf="tasks$ | async as tasks; else loading">
+  <app-add-task></app-add-task>
+  <app-task-item
+    (onToggleReminder)="toggleReminder(task)"
+    (onDeleteTask)="removeTask(task)"
+    *ngFor="let task of tasks"
+    [task]="task"
+  ></app-task-item>
+</div>
+
+<ng-template #loading> loading ... </ng-template>
